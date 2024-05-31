@@ -5,20 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.bionickhand.composition.databinding.FragmentGameBinding
+import com.bionickhand.composition.databinding.FragmentGameFinishedBinding
 
-class GameFragment : Fragment() {
+class GameFinishedFragment : Fragment() {
 
-    private var _binding: FragmentGameBinding? = null
-    private val binding: FragmentGameBinding
-        get() = _binding ?: throw RuntimeException("FragmentGameBinding == null")
+    private var _binding: FragmentGameFinishedBinding? = null
+    private val binding: FragmentGameFinishedBinding
+        get() = _binding ?: throw RuntimeException("FragmentGameFinishedBinding == null")
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentGameBinding.inflate(inflater, container, false)
+        _binding = FragmentGameFinishedBinding.inflate(inflater, container, false)
         return binding.root
     }
 
