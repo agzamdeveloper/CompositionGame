@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.bionickhand.composition.R
 import com.bionickhand.composition.databinding.FragmentGameBinding
 import com.bionickhand.composition.domain.entity.GameResult
@@ -34,16 +35,6 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvOption1.setOnClickListener {
-            launchGameFinishedFragment(
-                GameResult(
-                    true,
-                    0,
-                    0,
-                    GameSettings(0,0,0,0)
-                )
-            )
-        }
     }
 
     override fun onDestroy() {
