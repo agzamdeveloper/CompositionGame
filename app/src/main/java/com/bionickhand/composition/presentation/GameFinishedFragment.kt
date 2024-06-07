@@ -7,15 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bionickhand.composition.R
 import com.bionickhand.composition.databinding.FragmentGameFinishedBinding
 
 class GameFinishedFragment : Fragment() {
     private val args by navArgs<GameFinishedFragmentArgs>()
-
-    private val gameResult by lazy {
-        args.gameResult
-    }
 
     private var _binding: FragmentGameFinishedBinding? = null
 
@@ -38,56 +33,13 @@ class GameFinishedFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-//        requireActivity().onBackPressedDispatcher.addCallback(
-//            viewLifecycleOwner,
-//            object : OnBackPressedCallback(true) {
-//                override fun handleOnBackPressed() {
-//                    retryGame()
-//                }
-//
-//            }
-//        )
         binding.buttonRetry.setOnClickListener {
             retryGame()
         }
     }
 
     private fun bindingViews() {
-        with(binding) {
-            emojiResult.setImageResource(getSmileResId())
-            tvRequiredAnswers.text = String.format(
-                getString(R.string.required_score),
-                gameResult.gameSettings.minCountOfRightAnswers
-            )
-            tvScoreAnswers.text = String.format(
-                getString(R.string.score_answers),
-                gameResult.countOfRightAnswers
-            )
-            tvRequiredPercentage.text = String.format(
-                getString(R.string.required_percentage),
-                gameResult.gameSettings.mainPercentOfRightAnswers
-            )
-            tvScorePercentage.text = String.format(
-                getString(R.string.score_percentage),
-                getPercentOfRightAnswers()
-            )
-        }
-    }
-
-    private fun getSmileResId(): Int {
-        return if (gameResult.winner) {
-            R.drawable.ic_smile
-        } else {
-            R.drawable.ic_sad
-        }
-    }
-
-    private fun getPercentOfRightAnswers() = with(gameResult) {
-        if (countOfQuestions == 0) {
-            0
-        } else {
-            ((countOfRightAnswers / countOfQuestions.toDouble()) * 100).toInt()
-        }
+        binding.gameResult = args.gameResult
     }
 
     override fun onDestroy() {
