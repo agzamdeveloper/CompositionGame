@@ -89,7 +89,7 @@ class GameViewModel(
         )
         _enoughCountOfRightAnswers.value =
             countOfRightAnswers >= gameSettings.minCountOfRightAnswers
-        _enoughPercentOfRightAnswers.value = percent >= gameSettings.mainPercentOfRightAnswers
+        _enoughPercentOfRightAnswers.value = percent >= gameSettings.minPercentOfRightAnswers
     }
 
     private fun calculatePercentOfRightAnswers(): Int {
@@ -109,7 +109,7 @@ class GameViewModel(
 
     private fun getGameSettings() {
         this.gameSettings = getGameSettingsUseCase(level)
-        _minPercent.value = gameSettings.mainPercentOfRightAnswers
+        _minPercent.value = gameSettings.minPercentOfRightAnswers
     }
 
     private fun startTimer() {
